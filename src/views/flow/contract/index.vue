@@ -153,7 +153,7 @@
                 clearable
                 size="small"/>
             </el-form-item>
-            <el-form-item :label="$t('contract.currentPerson')" prop="applyForUserId">
+            <el-form-item :label="$t('contract.applyForUserId')" prop="applyForUserId">
               <el-select v-model="queryParams.applyForUserId" style="width: 100%"
                          :placeholder="$t('common.placeSelect')+' '+$t('contract.currentPerson')" filterable
                          ref="searchSelect" :filter-method="searchUser" clearable size="small">
@@ -210,12 +210,6 @@
             <el-form-item :label="$t('contract.createDeptId')" prop="deptId">
               <treeselect v-model="form.deptId" :options="deptOptions" :show-count="true"
                           :placeholder="$t('common.placeSelect')+' '+$t('contract.createDeptId')"/>
-            </el-form-item>
-
-            <el-form-item :label="$t('contract.createBy')" prop="createBy">
-              <el-input v-model="queryParams.createBy"
-                        :placeholder="$t('common.placeSelect')+' '+$t('contract.createBy')"
-                        suffix-icon="el-icon-search"/>
             </el-form-item>
 
             <el-form-item :label="$t('contract.contractStatus')" prop="contractDrict">
