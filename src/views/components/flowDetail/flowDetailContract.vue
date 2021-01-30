@@ -28,6 +28,7 @@
                               v-model="explan"
                               :placeholder="$t('common.placeholder')+$t('sealinfo.explan')"
                               maxlength="1000"
+                              :disabled="btn.length === 0"
                               show-word-limit
                     ></el-input>
                   </el-form-item>
@@ -40,15 +41,14 @@
                 </el-col>
                 <el-col :span="12">
                   <div class="msg">
-                    <div style="color:#F56C6C">{{ $t('sealinfo.explan') }}：</div>
+                    <div style="color:#f56c6c">{{ $t('sealinfo.explan') }}：</div>
                     <div v-for="(item,index) in msgList" :key="index+item.nodeName">
                       <div v-for="(item1,index1) in item.msglist" :key="item1.createTime+item1.msgContent">
                         <p v-if="item1.msgContent === '同意'">{{ item1.createName }} ：{{ item1.createTime }}
                           {{ item1.msgContent }}</p>
-                        <p v-else>{{ item1.createName }}： {{ item1.msgContent }}</p>
+                        <p v-else>[{{item1.createTime}}]  {{ item1.createName }}： {{ item1.msgContent }}</p>
                       </div>
                     </div>
-
                   </div>
                 </el-col>
               </el-row>
