@@ -74,7 +74,7 @@
             {{parseTime(scope.row.procesTime,'{y}-{m}-{d} {h}:{i}')}}
             </template>
           </el-table-column>
-          <el-table-column width="80" :label="$t('common.operation')" align="center" class-name="small-padding fixed-width">
+          <el-table-column width="80" :label="$t('common.detailOperation')" align="center" class-name="small-padding fixed-width">
             <template slot-scope="scope">
                <el-button
                  size="mini"

@@ -289,7 +289,7 @@
 
 
         <el-table v-loading="loading" :data="contractList" @selection-change="handleSelectionChange" border>
-          <el-table-column width="55" type="selection"  align="center"/>
+          <el-table-column width="55" type="selection"  align="center" v-if="selectionShow"/>
           <el-table-column :label="$t('contract.applyForUserId')" align="center" prop="applyForUName"/>
           <el-table-column width="130" :label="$t('contract.contractPreNo')" align="center" prop="contractPreNo">
             <template slot-scope="scope"><span>{{ scope.row.contractPreNo || '--' }}</span></template>
@@ -301,7 +301,7 @@
           <el-table-column :label="$t('flow.status')" align="center" prop="contractDict" :formatter="statusFormat"/>
           <el-table-column width="150" :label="$t('common.examinationApproval')" align="center" prop="workName"/>
           <el-table-column width="160" :label="$t('contract.updateTime')" align="center" prop="updateTime"/>
-          <el-table-column  :label="$t('common.detailOperation')" align="center"
+          <el-table-column  :label="$t('common.detailOperation')" align="center" width="80"
                            class-name="small-padding fixed-width">
             <template slot-scope="scope">
               <!-- 查看 =>催办 =>更新 =>归档=>下载 =>终止 -->
@@ -544,6 +544,8 @@ import {checkPermi} from '@/utils/permission';
 import {downLoadZip} from "@/utils/zipdownload";
 import FilePreview from "../../../components/FilePreview/index";
 
+import store from '@/store'
+
 export default {
   components: {
     FilePreview,
@@ -729,6 +731,22 @@ export default {
       transferVisible: false,
       sealStoreList: []
     };
+  },
+  //vsc_sun添加
+  computed:{
+    selectionShow(){
+      const  value  = "flow:contract:transferContract"
+      const all_permission = "*:*:*";
+      const permissions = store.getters && store.getters.permissions
+      const hasPermissions = permissions.some(permission => {
+        return all_permission === permission || value===permission
+      })
+      console.log('与没有权限'+hasPermissions);
+      if (!hasPermissions) {
+        return false;
+      }
+      return true;
+    }
   },
   created() {
     this.userId = this.$store.getters.userId

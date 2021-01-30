@@ -89,7 +89,7 @@
       <el-table-column :label="$t('contractTemplate.remark')" align="center" prop="remark"/>
       <el-table-column :label="$t('common.examinationApproval')" align="center" prop="workName"/>
 
-      <el-table-column :label="$t('common.detail')" align="center" class-name="small-padding fixed-width">
+      <el-table-column :label="$t('common.detailOperation')" align="center" width="80" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
             size="mini"

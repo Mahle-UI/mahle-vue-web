@@ -124,7 +124,7 @@
         </template>
       </el-table-column>
       <el-table-column width="150" :label="$t('common.examinationApproval')" align="center" prop="workName"/>
-      <el-table-column :label="$t('common.detailOperation')" align="center" width="100">
+      <el-table-column :label="$t('common.detailOperation')" align="center" width="80">
         <template slot-scope="scope">
           <el-button
             size="mini"

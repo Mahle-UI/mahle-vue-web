@@ -60,7 +60,7 @@
         </template>
       </el-table-column>
       <el-table-column width="150" :label="$t('common.examinationApproval')" align="center" prop="workName" />
-      <el-table-column width="100" :label="$t('common.detailOperation')" align="center"
+      <el-table-column width="80" :label="$t('common.detailOperation')" align="center"
                        class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
