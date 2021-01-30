@@ -3,7 +3,7 @@
     <el-row style="text-align: right;display: flex;align-items: center">
       <el-col :span="12" style="text-align: left">
         <h3 style="font-size:18px;font-weight: normal;">
-          {{ form.isHistory === '0' ? $t('contract.contractApprovalDetails') : $t('contract.historyContractDetails') }}
+          {{ title }}
         </h3>
       </el-col>
     </el-row>
@@ -31,6 +31,8 @@ import contractDetail from "@/components/flow/contractBymeDetail";
 import contract from "../apply/contract";
 import flowDetail from "../../components/flowDetail/flowDetailContract";
 import {getFlowOperateButton} from "@/api/info/flow";
+import {getFlowType} from "@/api/info/proces";
+
 
 export default {
   name: "Contract",
@@ -39,6 +41,7 @@ export default {
   },
   data() {
     return {
+      title:'',
       activeNames: ['1', '2', '4'],
       showApplyType: true,
       tableData: [],
@@ -70,8 +73,24 @@ export default {
   },
   created() {
     //console.log(this.update);
+    this.initTitle();
   },
   methods: {
+    initTitle(){
+      let hostId = this.$route.query.id;
+      if(hostId) {
+        getFlowType(hostId).then(response => {
+          if (response.code === 200 && response.data) {
+            this.title = this.$t('contract.contractApprovalDetails') + "：" + response.data
+            console.log(response)
+          }else {
+            this.title = this.$t('contract.historyContractDetails')
+          }
+        })
+      }else {
+        this.title = this.$t('contract.historyContractDetails')
+      }
+    },
     updateCallback(val){
       this.getView();
     },

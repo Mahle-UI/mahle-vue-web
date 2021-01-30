@@ -1,6 +1,6 @@
 import request from '@/utils/request'
 
- 
+
 //取消代办设置操作
 export function cancelAction(data) {
   return request({
@@ -38,6 +38,14 @@ export function operateAction(data) {
 export function personList(query) {
   return request({
     url: '/agent/person/list',
+    method: 'get',
+    params: query
+  })
+}
+//个人代办设置列表
+export function mamageList(query) {
+  return request({
+    url: '/agent/manage/list',
     method: 'get',
     params: query
   })

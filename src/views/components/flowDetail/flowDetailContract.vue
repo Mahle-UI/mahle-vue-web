@@ -32,7 +32,7 @@
                               show-word-limit
                     ></el-input>
                   </el-form-item>
-                  <el-button v-if="btn.length > 0" type="success" @click="addexplan" v-prevent-repeat-click>
+                  <el-button v-if="btn.length > 0 && form.applyForUserId!=userId && from.contractDict != '2'" type="success" @click="addexplan" v-prevent-repeat-click>
                     {{ $t('sealinfo.send') }}
                   </el-button>
                   <el-button type="success" v-if="form.applyForUserId!=userId && mShowComment" @click="confirmexplan"

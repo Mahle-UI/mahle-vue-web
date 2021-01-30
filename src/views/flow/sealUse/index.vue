@@ -523,15 +523,11 @@ export default {
       usedShow(row){
         row.show = false;
         if(row.status==0){
-          if(checkRole(['smts_seal_store_main'])){
-            row.show = true;
-          }else {
-           canUsedSealUse(row.id).then(response => {
-              if (response.code == '200') {
-                row.show = response.data
-              }
-            });
-          }
+         canUsedSealUse(row.id).then(response => {
+            if (response.code === 200) {
+              row.show = response.data
+            }
+          });
         }
       },
       used(id){

@@ -192,10 +192,11 @@
 
 <script>
 
-import { welcomeExplain, welcomeInfrom, welcomeNotice } from "@/api/welcome/welcome";
+import { welcomeExplain, welcomeInfrom, welcomeNotice,readNotice } from "@/api/welcome/welcome";
 import {listProces,applyList} from "@/api/info/proces";
 import PanelGroup from './dashboard/PanelGroup'
 import {checkPermi} from "@/utils/permission"
+import {usedSealUse} from "@/api/flow/sealUse";
 
 export default {
   name: 'Index',
@@ -347,6 +348,7 @@ export default {
         this.$router.push("/me/detail?id="+row.contentId);
       },
       handleNewsView(row){
+        let that = this;
         //0  是 合同;   1 是 模板 ;  2是 印章
         if(row.hostType=='0'){
           //合同
@@ -372,6 +374,18 @@ export default {
         }else if(row.hostType == "11"){
           //子合同2
           this.$router.push("/me/detail?id="+row.hostId);
+        }else {
+          this.$confirm(row.noticeContent, this.$t('common.detailOperation'), {
+            confirmButtonText: this.$t('common.submit'),
+            cancelButtonText: this.$t('common.cancle'),
+            type: "warning"
+          }).then(function() {
+            readNotice(row.noticeId).then(response => {
+              if(response.code === 200){
+                that.getList1()
+              }
+            });
+          }).catch(function() {});
         }
         // this.$router.push("/news/detail?id="+row.id);
       },
@@ -414,38 +428,39 @@ export default {
       },
       websocketonmessage(data) {
         try {
-          let obj = JSON.parse(data.data);
-          //{"dateTime":"2020-11-25 09:27","zone":0,"content":"【C-2020-0022】【测试】待您审批，【薛玲玲】请您尽快处理。"}
-          //{"dateTime":"2020-11-25 09:27","zone":1,"content":"【C-2020-0022】【测试】待您审批，【薛玲玲】请您尽快处理。"}
-          //{"dateTime":"2020-11-25 09:39","Zone":3,"name":"薛玲玲","contractId":"1a2e330209144b4c9eb42bd7fac36560","content":"123"}
-          if(obj.zone==0){
-            //我的消息
-            // var datas = {}
-            // datas.noticeContent = obj.content
-            // datas.createTime = obj.dateTime
-            // this.messageData.unshift(datas)
-            // this.total1 +=1
-            this.getList1()
-          }else if(obj.zone==1||obj.Zone==1){
-            //公告
-            // var datas = {}
-            // datas.noticeTitle = obj.content
-            // datas.createTime = obj.dateTime
-            // this.msgData.unshift(datas)
-            // this.total4 +=1
-            this.getList4()
-          }else if(obj.zone==3||obj.Zone==3){
-            //追加解释
-            // var datas = {}
-            // datas.msgContent = obj.content
-            // datas.createName = obj.name
-            // datas.createTime = obj.dateTime
-            // datas.contentId = obj.contractId
-            // this.meData.unshift(datas)
-            // this.total2 +=1
-            this.getList2()
+          if(data.data !== 'success') {
+            let obj = JSON.parse(data.data);
+            //{"dateTime":"2020-11-25 09:27","zone":0,"content":"【C-2020-0022】【测试】待您审批，【薛玲玲】请您尽快处理。"}
+            //{"dateTime":"2020-11-25 09:27","zone":1,"content":"【C-2020-0022】【测试】待您审批，【薛玲玲】请您尽快处理。"}
+            //{"dateTime":"2020-11-25 09:39","Zone":3,"name":"薛玲玲","contractId":"1a2e330209144b4c9eb42bd7fac36560","content":"123"}
+            if (obj.zone == 0) {
+              //我的消息
+              // var datas = {}
+              // datas.noticeContent = obj.content
+              // datas.createTime = obj.dateTime
+              // this.messageData.unshift(datas)
+              // this.total1 +=1
+              this.getList1()
+            } else if (obj.zone == 1 || obj.Zone == 1) {
+              //公告
+              // var datas = {}
+              // datas.noticeTitle = obj.content
+              // datas.createTime = obj.dateTime
+              // this.msgData.unshift(datas)
+              // this.total4 +=1
+              this.getList4()
+            } else if (obj.zone == 3 || obj.Zone == 3) {
+              //追加解释
+              // var datas = {}
+              // datas.msgContent = obj.content
+              // datas.createName = obj.name
+              // datas.createTime = obj.dateTime
+              // datas.contentId = obj.contractId
+              // this.meData.unshift(datas)
+              // this.total2 +=1
+              this.getList2()
+            }
           }
-
         }catch (e) {
           console.log(e)
         }
