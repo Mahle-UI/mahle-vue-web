@@ -131,7 +131,7 @@ export default {
       procesStatusOptions: [],
       urgentOptions:[],
       // 日期范围
-      dateRange: [],
+      dateRange: [new Date(new Date().getFullYear()-3,0,1),new Date()],
       // 查询参数
       queryParams: {
         pageNum: 1,

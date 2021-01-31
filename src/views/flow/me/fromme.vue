@@ -135,7 +135,7 @@ export default {
       procesStatusOptions: [],
       urgentOptions:[],
       // 日期范围
-      dateRange: [],
+      dateRange: [new Date(new Date().getFullYear()-3,0,1),new Date()],
       // 查询参数
       queryParams: {
         pageNum: 1,
@@ -189,6 +189,7 @@ export default {
     /** 重置按钮操作 */
     resetQuery() {
       this.resetForm("queryForm");
+      console.log(this.dateRange)
       this.dateRange = []
       this.handleQuery();
     },
