@@ -31,7 +31,7 @@ export function welcomeNotice(data) {
 //已读 我的 消息
 export function readNotice(id) {
   return request({
-    url: `/info/welcome/new/read/${id}`,
+    url: '/info/welcome/new/read/' + id,
     method: 'get'
   })
 }

@@ -1,26 +1,28 @@
 <template>
   <div>
-    <el-image-viewer v-if="showViewer" :on-close="()=>{this.showViewer=false}" :url-list="[url]"
-                     :z-index="9999"></el-image-viewer>
+    <el-image ref="preImage" style="width: 0; height: 0" :src="url"
+              :preview-src-list="[url]">
+    </el-image>
     <pdfview ref="pdfview"></pdfview>
   </div>
 </template>
 
 <script>
-import ElImageViewer from 'element-ui/packages/image/src/image-viewer'
+//import ElImageViewer from 'element-ui/packages/image/src/image-viewer'
 import pdfview from '../PdfView/index';
 
 
 export default {
   name: "FilePreview",
   components: {
-    ElImageViewer,
+    /*ElImageViewer,*/
     pdfview
   },
   data() {
     return {
       showViewer: false,
-      url: "",
+      url: '',
+      id:''
     }
   },
   methods: {
@@ -34,6 +36,7 @@ export default {
       this.viewFile(file.name,  fileId)
     },
     viewFile(fileName, fileId) {
+      this.id = fileId;
       let imgRegx = new RegExp('(.jpg|.jpeg|.png|.gif|.bmp)$')
       let docRegx = new RegExp('(.doc|.docx)$')
       let pdfRegx = new RegExp('(.pdf)$')
@@ -47,7 +50,12 @@ export default {
         })
       } else if (imgRegx.test(name)) {
         this.url = url;
-        this.showViewer = true;
+        //this.showViewer = true;
+        /*setTimeout(function (){
+        },200);*/
+        this.$nextTick(() => {
+          this.$refs.preImage.clickHandler();
+        })
       } else {
         window.open(url, '_blank')
       }
@@ -55,7 +63,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>

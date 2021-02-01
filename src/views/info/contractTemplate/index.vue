@@ -23,7 +23,7 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="$t('contractTemplate.templDict')" prop="templDict">
+      <el-form-item :label="$t('flow.treatmentState')" prop="templDict">
         <el-select ref="multiSelect2" v-model="queryParams.templDict"
                    :placeholder="$t('common.placeSelect')+' '+$t('contractTemplate.templDict')"
                    @keyup.enter.stop.native="handleQuery" clearable size="small">
@@ -84,10 +84,10 @@
       <el-table-column :label="$t('contractTemplate.templateName')" align="center" prop="templName"/>
       <el-table-column :label="$t('contractTemplate.createBy')" align="center" prop="uName"/>
       <el-table-column :label="$t('contractTemplate.usedept')" align="center" prop="usageDeptName"/>
-      <el-table-column :label="$t('contractTemplate.templDict')" align="center" prop="templDict"
+      <el-table-column :label="$t('flow.treatmentState')" align="center" prop="templDict"
                        :formatter="templDictFormat"/>
-      <el-table-column :label="$t('contractTemplate.remark')" align="center" prop="remark"/>
       <el-table-column :label="$t('common.examinationApproval')" align="center" prop="workName"/>
+      <el-table-column :label="$t('contractTemplate.remark')" align="center" prop="remark"/>
 
       <el-table-column :label="$t('common.detailOperation')" align="center" width="80" class-name="small-padding fixed-width">
         <template slot-scope="scope">

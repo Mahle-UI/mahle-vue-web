@@ -28,11 +28,10 @@
                               v-model="explan"
                               :placeholder="$t('common.placeholder')+$t('sealinfo.explan')"
                               maxlength="1000"
-                              :disabled="btn.length === 0"
                               show-word-limit
                     ></el-input>
                   </el-form-item>
-                  <el-button v-if="btn.length > 0 && form.applyForUserId!=userId && from.contractDict != '2'" type="success" @click="addexplan" v-prevent-repeat-click>
+                  <el-button v-if="btn.length > 0" type="success" @click="addexplan" v-prevent-repeat-click>
                     {{ $t('sealinfo.send') }}
                   </el-button>
                   <el-button type="success" v-if="form.applyForUserId!=userId && mShowComment" @click="confirmexplan"
@@ -41,14 +40,15 @@
                 </el-col>
                 <el-col :span="12">
                   <div class="msg">
-                    <div style="color:#f56c6c">{{ $t('sealinfo.explan') }}：</div>
+                    <div style="color:#F56C6C">{{ $t('sealinfo.explan') }}：</div>
                     <div v-for="(item,index) in msgList" :key="index+item.nodeName">
                       <div v-for="(item1,index1) in item.msglist" :key="item1.createTime+item1.msgContent">
                         <p v-if="item1.msgContent === '同意'">{{ item1.createName }} ：{{ item1.createTime }}
                           {{ item1.msgContent }}</p>
-                        <p v-else>[{{item1.createTime}}]  {{ item1.createName }}： {{ item1.msgContent }}</p>
+                        <p v-else>{{ item1.createName }}： {{ item1.msgContent }}</p>
                       </div>
                     </div>
+
                   </div>
                 </el-col>
               </el-row>
@@ -79,9 +79,6 @@
               prop="dotime"
               width="150"
               :label="$t('sealinfo.dotimemin')">
-<!--              <template scope="scope">
-                {{ scope.row.dotimemin }}分钟
-              </template>-->
             </el-table-column>
             <el-table-column
               prop="actiontime"
@@ -123,7 +120,7 @@
 
 <script>
 import {getFlowOperateButton, getFlowOperateOperate} from "@/api/info/flow";
-import {addexplan, msgConfirm, msgLaunchmsg, msgLoadmsg, archiveoperation} from "@/api/flow/contract";
+import {msgConfirm, msgLaunchmsg, msgLoadmsg, archiveoperation} from "@/api/flow/contract";
 import FlowPic from "@/components/IFrameItem/FlowPic"
 import contractfile from '@/components/flow/contractfile' ;
 
@@ -266,7 +263,7 @@ export default {
           this.closeCurrentTag();
         }
       });
-    },
+    }
   }
 };
 </script>

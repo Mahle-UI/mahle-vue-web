@@ -1017,6 +1017,7 @@ export default {
     },
     getItem() {
       this.queryType = this.$route.query.type;
+      console.log(this.queryType)
       if (this.queryType == 2) {
         this.showCondition = true;
       }
@@ -1026,7 +1027,6 @@ export default {
         this.queryType = 3
         this.form.contractNo = this.$i18n.locale == 'en' ? "None" : "无";
       }
-      console.log(this.contractType)
       if (this.contractType != 3) {
         searchtmpcontract({differ: this.queryType - 1}).then(response => {
           if (response.code == '200') {

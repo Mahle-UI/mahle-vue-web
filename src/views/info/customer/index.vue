@@ -549,7 +549,6 @@ export default {
         data.linkId = ''
         data.linkManCn= ''
         this.form = response.data;
-        //this.form.managerId = Number(this.from.managerId)
         if(this.form.country=='中国'&&this.form.zone&&this.form.zone.split('/').length==2){
           this.form.city = [TextToCode[ this.form.zone.split('/')[0]].code,TextToCode[ this.form.zone.split('/')[0]][this.form.zone.split('/')[1]].code];
         }else{

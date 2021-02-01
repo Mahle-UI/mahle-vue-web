@@ -158,7 +158,7 @@
               this.closeCurrentTag();
             }
         });
-      },
+      }
     }
   };
 </script>

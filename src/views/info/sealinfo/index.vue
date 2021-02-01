@@ -24,7 +24,7 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="$t('sealinfo.sealDict')" prop="sealDict">
+      <el-form-item :label="$t('flow.treatmentState')" prop="sealDict">
         <el-select ref="multiSelect2" v-model="queryParams.sealDict" @keyup.enter.stop.native="handleQuery"
                    :placeholder="$t('common.placeSelect')+' '+$t('sealinfo.sealDict')" clearable size="small">
           <el-option
@@ -102,7 +102,7 @@
       </el-table-column>
       <el-table-column :label="$t('sealinfo.sealName')" align="center" prop="sealName"/>
       <el-table-column width="150" :label="$t('flow.applicant')" align="center" prop="applicant" />
-      <el-table-column width="150" :label="$t('sealinfo.sealDict')" align="center" prop="sealDict" :formatter="sealDictFormat"/>
+
       <el-table-column :label="$t('sealinfo.beginTime')" align="center" prop="beginTime" width="150">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.beginTime, '{y}-{m}-{d}') }}</span>
@@ -123,6 +123,7 @@
           </el-image>
         </template>
       </el-table-column>
+      <el-table-column width="150" :label="$t('flow.treatmentState')" align="center" prop="sealDict" :formatter="sealDictFormat"/>
       <el-table-column width="150" :label="$t('common.examinationApproval')" align="center" prop="workName"/>
       <el-table-column :label="$t('common.detailOperation')" align="center" width="80">
         <template slot-scope="scope">

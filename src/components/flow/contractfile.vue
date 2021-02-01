@@ -95,9 +95,6 @@
         form: {},
         // 表单校验
         rules: {
-          /*archiveBeginTime: [
-            { required: true, message: "开始时间不能为空", trigger: "blur" }
-          ],*/
           archiveEndTime: [
             { required: true, message: "结束时间不能为空", trigger: "blur" }
           ],
@@ -114,18 +111,16 @@
       };
     },
     created() {
-      console.log("created:" + this.contractId)
        this.form.contractId = this.contractId
     },
     watch:{
       contractId(val){
         this.reset()
-        console.log("created:" +val);
         this.form.contractId = val
       }
     } ,
     methods: {
-      UploadUrl:function(){
+      UploadUrl(){
         //归档160
         return process.env.VUE_APP_BASE_API + "/info/file/upload?type=160";//+this.type
       },

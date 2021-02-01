@@ -30,7 +30,7 @@ export function hadDoneList(query) {
 // 我已审批
 export function getFlowType(hostId) {
   return request({
-    url: `/info/proces/getFlowType/${hostId}`,
+    url: '/info/proces/getFlowType/' + hostId,
     method: 'get'
   })
 }

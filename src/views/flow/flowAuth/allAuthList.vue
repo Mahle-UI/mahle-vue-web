@@ -19,8 +19,8 @@
     <el-table v-loading="loading" :data="flowList" border>
 
       <el-table-column :label="$t('flowAuth.flowName')" align="center" prop="flowName"/>
-      <el-table-column :label="$t('flowAuth.authUser')" align="center" prop="agentUserName" />
       <el-table-column :label="$t('flowAuth.userAuth')" align="center" prop="userName" />
+      <el-table-column :label="$t('flowAuth.authUser')" align="center" prop="agentUserName" />
       <el-table-column :label="$t('flowAuth.startTime')" align="center" prop="beginDate">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.beginDate, '{y}-{m}-{d}') }}</span>

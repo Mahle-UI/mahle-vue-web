@@ -32,7 +32,7 @@
               ></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item :label="$t('contract.status')" prop="contractDrict">
+          <el-form-item :label="$t('flow.treatmentState')" prop="contractDrict">
             <el-select ref="multiSelect3" v-model="queryParams.contractDrict"
                        :placeholder="$t('common.placeSelect')+' '+$t('contract.status')"
                         clearable size="small">
@@ -292,7 +292,7 @@
           <el-table-column width="200" :label="$t('contract.customerName')" align="center" prop="objNameCn"/>
           <el-table-column width="150" :label="$t('contract.amount')" align="center" prop="amount"
                            :formatter="formatCurrency"/>
-          <el-table-column :label="$t('flow.status')" align="center" prop="contractDict" :formatter="statusFormat"/>
+          <el-table-column :label="$t('flow.treatmentState')" align="center" prop="contractDict" :formatter="statusFormat"/>
           <el-table-column width="150" :label="$t('common.examinationApproval')" align="center" prop="workName"/>
           <el-table-column width="160" :label="$t('contract.updateTime')" align="center" prop="updateTime"/>
           <el-table-column  :label="$t('common.detailOperation')" align="center" width="80"
@@ -339,7 +339,7 @@
               <el-button
                 size="mini"
                 icon="el-icon-download"
-                type="text" v-if="scope.row.contractDict==4&&scope.row.isdownLoad==1"
+                type="text" v-if="scope.row.contractDict==4 && scope.row.isdownLoad === '1'"
                 @click="handleDownload(scope.row)"
               >{{ $t('common.download') }}
               </el-button>
@@ -735,11 +735,9 @@ export default {
       const hasPermissions = permissions.some(permission => {
         return all_permission === permission || value===permission
       })
-      console.log('与没有权限'+hasPermissions);
-      if (!hasPermissions) {
-        return false;
-      }
-      return true;
+      //console.log('与没有权限'+hasPermissions);
+      return hasPermissions;
+
     }
   },
   created() {

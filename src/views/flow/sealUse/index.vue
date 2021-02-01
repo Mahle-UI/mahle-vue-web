@@ -106,7 +106,7 @@
           <span>{{ parseTime(scope.row.realUseDate, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('sealUse.status')" align="center" prop="status" :formatter="statusFomatter"/>
+      <el-table-column :label="$t('flow.treatmentState')" align="center" prop="status" :formatter="statusFomatter"/>
       <el-table-column width="150" :label="$t('common.examinationApproval')" align="center" prop="workName" />
       <el-table-column :label="$t('common.detailOperation')" align="center" width="100">
         <template slot-scope="scope">

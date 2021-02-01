@@ -228,7 +228,8 @@ export default{
     "applyTime":"申请时间",
     "approvedTime":"最近处理时间",
     "status":"流程状态",
-    "preNode":"上个节点"
+    "preNode":"上个节点",
+    "treatmentState":"处理状态"
   },
   //合同模板
   contractTemplate: {

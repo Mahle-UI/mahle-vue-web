@@ -47,13 +47,6 @@ import { addLinkman,updateLinkman,vaillinkmobile } from "@/api/info/linkman";
 export default {
   name: "Linkman",
   data() {
-    const vaillinkmobile = (rule, value, callback) => {
-      if (!this.form.mobile) {
-        callback(new Error("请输入手机号"));
-      } else {
-        this.vaillinkmobile(callback)
-      }
-    };
     return {
       isLoading:false,
       // 弹出层标题

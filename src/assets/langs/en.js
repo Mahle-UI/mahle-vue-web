@@ -228,7 +228,8 @@ export default{
     "applyTime":"Application Time",
     "approvedTime":"Latest Processing Time",
     "status":"Process status",
-    "preNode":"Last node"
+    "preNode":"Last node",
+    "treatmentState":"treatment state"
   },
   //合同模板
   contractTemplate: {
