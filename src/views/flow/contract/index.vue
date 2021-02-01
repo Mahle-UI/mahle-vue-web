@@ -385,16 +385,7 @@
           <el-row :gutter="24">
             <el-col :span="24">
                  <el-form-item :label="$t('contract.archivedBy')" prop="archiveBy">
-                    <el-select v-model="form.archiveBy" style="width: 100%"
-                               :placeholder="$t('common.placeSelect')+' '+$t('contract.archivedBy')" filterable
-                               ref="searchSelect" :filter-method="searchUser" clearable size="small">
-                  <el-option
-                    v-for="user in userOptions"
-                    :key="user.userId"
-                    :label="user.nickName"
-                    :value="user.userId"
-                  />
-              </el-select>
+                    <span>{{form.archiveBy}}</span>
                 </el-form-item>
             </el-col>
           </el-row>
@@ -1034,7 +1025,7 @@ export default {
       this.form = row;
       this.open = true;
       this.title = "更新" + this.$t('contract.functionName');
-      this.form.archiveBy = this.$store.getters.userId
+      this.form.archiveBy = row.applyForUName;
       this.upload.fileList = [];
       this.userOptions = [{userId: this.$store.getters.userId, nickName: this.$store.getters.userName}]
     },
@@ -1080,6 +1071,7 @@ export default {
     },
     submitFileForm() {
       this.$refs["form"].validate(valid => {
+        console.log(valid);
         if (valid) {
           this.form.fileType = 160
           updcontractfile(this.form).then(response => {
