@@ -34,7 +34,7 @@
               :end-placeholder="$t('common.endDate')" style="width: 260px">
             </el-date-picker>
           </el-form-item>
-          <el-form-item :label="$t('contract.status')" prop="procesStatus" label-width="80">
+          <el-form-item :label="$t('flow.status')" prop="procesStatus" label-width="80">
             <el-select ref="multiSelect2" v-model="queryParams.procesStatus"  @keyup.enter.stop.native="handleQuery" :placeholder="$t('common.placeSelect')+' '+$t('contract.status')" clearable size="small">
                <el-option
                 v-for="dict in procesStatusOptions"

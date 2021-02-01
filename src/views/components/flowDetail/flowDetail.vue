@@ -141,9 +141,9 @@
             //撤销 提示信息
             tip = this.$t('common.stopTips');
           }
-          if(btn === 'submit' && this.userId != this.tableData[0].userid){ //提交操作提示输入意见内容 申请人提交可以不写
-            tip = this.$t('common.placeholder') + this.$t('sealinfo.opinioncontent');
-          }
+          // if(btn === 'submit' && this.userId != this.tableData[0].userid){ //提交操作提示输入意见内容 申请人提交可以不写
+          //   tip = this.$t('common.placeholder') + this.$t('sealinfo.opinioncontent');
+          // }
           if(!!tip ){
             this.msgError(tip);
             return
