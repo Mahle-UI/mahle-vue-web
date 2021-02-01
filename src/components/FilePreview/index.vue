@@ -50,11 +50,14 @@ export default {
         })
       } else if (imgRegx.test(name)) {
         this.url = url;
+        let that = this;
         //this.showViewer = true;
         /*setTimeout(function (){
         },200);*/
         this.$nextTick(() => {
-          this.$refs.preImage.clickHandler();
+          setTimeout(function () {
+            that.$refs.preImage.clickHandler();
+          },200)
         })
       } else {
         window.open(url, '_blank')

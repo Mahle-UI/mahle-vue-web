@@ -541,6 +541,15 @@ export default {
   },
   name: "Contract",
   data() {
+    const validArchiveFile = (rule, value, callback) => {
+      console.log("sssss")
+      let fileSize = this.form.archiveFileId.length;
+      if (fileSize === 0 ) {
+        callback(new Error("请上传归档文件"));
+        return
+      }
+      callback()
+    };
     return {
       type: 160,
       notificationRadio1: '',
@@ -694,7 +703,7 @@ export default {
           {required: true, message: "请填写备注", trigger: "blur"}
         ],
         archiveFileId: [
-          {required: true, message: "请上传归档文件", trigger: "blur"}
+          {required: true, message: "请上传归档文件", trigger: "blur",validator: validArchiveFile}
         ],
         originPlace: [
           {required: true, message: "请填写原件存放地址", trigger: "blur"}
@@ -1074,6 +1083,7 @@ export default {
         console.log(valid);
         if (valid) {
           this.form.fileType = 160
+          console.log(this.form)
           updcontractfile(this.form).then(response => {
             if (response.code === 200) {
               this.msgSuccess(this.$t('common.successAdd'));
