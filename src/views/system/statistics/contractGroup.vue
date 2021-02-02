@@ -15,7 +15,18 @@
         <el-table-column :label="$t('statistics.yearApply')" align="center" prop="year" ></el-table-column>
         <el-table-column :label="$t('statistics.min')" align="center" prop="min" ></el-table-column>
         <el-table-column :label="$t('statistics.max')" align="center" prop="max" ></el-table-column>
-        <el-table-column :label="$t('statistics.median')" align="center" prop="median" ></el-table-column>
+        <el-table-column :label="$t('statistics.median')" align="center" prop="median" >
+          <template slot="header" slot-scope="scope">
+            {{ $t('statistics.median') }}
+            <el-tooltip class="item" effect="dark" placement="top">
+              <div  slot="content">中位数（Median）又称中值，统计学中的专有名词，是按顺序排列的一组数据中居于中间位置的数，<br>
+                                  代表一个样本、种群或概率分布中的一个数值，其可将数值集合划分为相等的上下两部分。对于有限的<br>
+                                  数集，可以通过把所有观察值高低排序后找出正中间的一个作为中位数。如果观察值有偶数个，通常取<br>
+                                  最中间的两个数值的平均数作为中位数。</div>
+              <i class="el-icon-question custom-tips"></i>
+            </el-tooltip>
+          </template>
+        </el-table-column>
     </el-table>
   </div>
 </template>
