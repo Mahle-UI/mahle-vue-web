@@ -61,7 +61,7 @@
           </el-col>
           <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
         </el-row>
-        <el-table v-loading="loading" :data="flowList" :stripe="true" border>
+        <el-table v-loading="loading" :data="flowList" border>
           <el-table-column width="150" :label="$t('flow.applicant')" align="center" prop="applicantName" :show-overflow-tooltip="true"/>
           <el-table-column width="180" :label="$t('flow.flowNo')" align="center" prop="procesSn" :show-overflow-tooltip="true"/>
           <el-table-column width="100" :label="$t('flow.level')" align="center" prop="urgent" :formatter="urgentFormat" :show-overflow-tooltip="true"/>

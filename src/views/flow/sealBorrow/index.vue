@@ -39,29 +39,28 @@
     </el-row>
 
     <el-table v-loading="loading" :data="sealBorrowList" @selection-change="handleSelectionChange" border>
-      <el-table-column v-if="false" type="selection" width="55" align="center" />
-      <el-table-column :label="$t('sealBorrow.sealName')" align="center" prop="sealName"/>
-      <el-table-column width="150" :label="$t('flow.applicant')" align="center" prop="reserve" />
-      <el-table-column width="150" :label="$t('sealBorrow.borrowDeptId')" align="center" prop="borrowDeptName"/>
-      <el-table-column :label="$t('sealBorrow.user')" align="center" prop="borrowUserName" width="130"/>
-      <el-table-column :label="$t('sealBorrow.planBorrowDate')" align="center" prop="planBorrowDate" :width="$i18n.locale=='en'?'160px':'130px'">
+      <el-table-column :label="$t('sealBorrow.sealName')" align="center" prop="sealName" :resizable="false"/>
+      <el-table-column width="100" :label="$t('flow.applicant')" align="center" prop="reserve" :resizable="false"/>
+      <el-table-column width="100 " :label="$t('sealBorrow.user')" align="center" prop="borrowUserName" :resizable="false"/>
+      <el-table-column width="240" :label="$t('sealBorrow.borrowDeptId')" align="center" prop="borrowDeptName" :resizable="false"/>
+      <el-table-column :width= "$i18n.locale=='en'?'140px':'120px'" :label="$t('sealBorrow.planBorrowDate')" align="center" prop="planBorrowDate" :resizable="false" >
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.planBorrowDate, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('sealBorrow.realityBorrowDate')" align="center" prop="realityBorrowDate" width="200">
+      <el-table-column width="200" :label="$t('sealBorrow.realityBorrowDate')" align="center" prop="realityBorrowDate" :resizable="false" >
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.realityBorrowDate, '{y}-{m}-{d} {h}:{i}:{s}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('sealBorrow.returnedDate')" align="center" prop="returnDate" width="200">
+      <el-table-column width="200" :label="$t('sealBorrow.returnedDate')" align="center" prop="returnDate" :resizable="false">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.returnDate, '{y}-{m}-{d} {h}:{i}:{s}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column width="150" :label="$t('common.examinationApproval')" align="center" prop="workName" />
+      <el-table-column width="150" :label="$t('common.examinationApproval')" align="center" prop="workName" :resizable="false"/>
       <el-table-column width="80" :label="$t('common.detailOperation')" align="center"
-                       class-name="small-padding fixed-width">
+                       class-name="small-padding fixed-width" :resizable="false">
         <template slot-scope="scope">
           <el-button
             size="mini"

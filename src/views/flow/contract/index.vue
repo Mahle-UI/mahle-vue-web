@@ -77,10 +77,9 @@
                 size="mini"
                 slot="reference"
                 v-hasPermi="['flow:contract:add']"
-              >{{ $t('common.add') }} {{ $t('contract.contractApplication') }}
+              >{{ $t('common.add') }}{{ $t('contract.contractApplication') }}
               </el-button>
             </el-popover>
-
           </el-col>
           <el-col :span="1.5" v-if="false">
             <el-button
@@ -125,7 +124,8 @@
             >{{ $t('contract.transferContract') }}
             </el-button>
           </el-col>
-          <el-col :span="1.5">
+<!--          vsc_sun 移除您有待审批任务-->
+          <el-col v-if="false" :span="1.5">
             <el-badge :value="num">
               <el-button size="small" @click="toByme">{{ $t('contract.pendingApplication') }}</el-button>
             </el-badge>
@@ -295,7 +295,7 @@
           <el-table-column :label="$t('flow.treatmentState')" align="center" prop="contractDict" :formatter="statusFormat"/>
           <el-table-column width="150" :label="$t('common.examinationApproval')" align="center" prop="workName"/>
           <el-table-column width="160" :label="$t('contract.updateTime')" align="center" prop="updateTime"/>
-          <el-table-column  :label="$t('common.detailOperation')" align="center" width="80"
+          <el-table-column width="80" :label="$t('common.detailOperation')" align="center"
                            class-name="small-padding fixed-width">
             <template slot-scope="scope">
               <!-- 查看 =>催办 =>更新 =>归档=>下载 =>终止 -->
@@ -308,7 +308,7 @@
               </el-button>
             </template>
           </el-table-column>
-          <el-table-column   :label="$t('common.operation')" align="center"
+          <el-table-column :label="$t('common.operation')" align="center"
                              class-name="small-padding fixed-width">
             <template slot-scope="scope">
               <!-- 催办 -->
@@ -729,15 +729,13 @@ export default {
   //vsc_sun添加
   computed:{
     selectionShow(){
-      const  value  = "flow:contract:transferContract"
+      const value  = "flow:contract:transferContract"
       const all_permission = "*:*:*";
       const permissions = store.getters && store.getters.permissions
       const hasPermissions = permissions.some(permission => {
         return all_permission === permission || value===permission
       })
-      //console.log('与没有权限'+hasPermissions);
       return hasPermissions;
-
     }
   },
   created() {

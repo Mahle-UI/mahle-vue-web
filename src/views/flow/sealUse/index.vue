@@ -89,26 +89,26 @@
     </el-row>
 
     <el-table v-loading="loading" :data="sealUseList" border>
-      <el-table-column v-if="false" :label="$t('sealUse.id')" align="center" prop="id" />
-      <el-table-column :label="$t('sealUse.sealId')" align="center" prop="sealName" />
-      <el-table-column :label="$t('flow.applicant')" align="center" prop="applicant" />
-      <el-table-column :label="$t('sealUse.userName')" align="center" prop="userName" />
-      <el-table-column v-if="false" :label="$t('sealUse.userId')" align="center" prop="userId" />
-      <el-table-column :label="$t('sealUse.useDate')" align="center" prop="useDate" width="180">
+      <el-table-column :label="$t('sealUse.sealId')" align="center" prop="sealName" :resizable="false"/>
+      <el-table-column width="100" :label="$t('flow.applicant')" align="center" prop="applicant" :resizable="false"/>
+      <el-table-column width="100" :label="$t('sealUse.userName')" align="center" prop="userName" :resizable="false"/>
+      <el-table-column v-if="false" :label="$t('sealUse.userId')" align="center" prop="userId" :resizable="false"/>
+
+      <el-table-column :label="$t('sealUse.files')" align="center" prop="files" :resizable="false"/>
+      <el-table-column width="100" :label="$t('sealUse.filesNum')" align="center" prop="filesNum" :resizable="false"/>
+      <el-table-column width="120" :label="$t('sealUse.useDate')" align="center" prop="useDate"  :resizable="false">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.useDate, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('sealUse.files')" align="center" prop="files" />
-      <el-table-column :label="$t('sealUse.filesNum')" align="center" prop="filesNum" />
-      <el-table-column :label="$t('sealUse.realUseDate')" align="center" prop="realUseDate" width="180">
+      <el-table-column width="120" :label="$t('sealUse.realUseDate')" align="center" prop="realUseDate" :resizable="false">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.realUseDate, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('flow.treatmentState')" align="center" prop="status" :formatter="statusFomatter"/>
-      <el-table-column width="150" :label="$t('common.examinationApproval')" align="center" prop="workName" />
-      <el-table-column :label="$t('common.detailOperation')" align="center" width="100">
+      <el-table-column width="150" :label="$t('flow.treatmentState')" align="center" prop="status" :formatter="statusFomatter" :resizable="false"/>
+      <el-table-column width="150" :label="$t('common.examinationApproval')" align="center" prop="workName" :resizable="false"/>
+      <el-table-column width="80" :label="$t('common.detailOperation')" align="center" :resizable="false">
         <template slot-scope="scope">
           <el-button
             size="mini"
@@ -120,7 +120,7 @@
           <!-- || scope.row.status==2 -->
         </template>
       </el-table-column>
-      <el-table-column :label="$t('common.operation')" align="center" class-name="small-padding fixed-width">
+      <el-table-column width="200" :label="$t('common.operation')" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
             size="mini"

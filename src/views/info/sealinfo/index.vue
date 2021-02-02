@@ -89,9 +89,9 @@
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
-    <el-table v-loading="loading" :data="sealinfoList" @selection-change="handleSelectionChange" border>
-      <el-table-column type="selection" :selectable='checkboxSelect' width="55" align="center"/>
-      <el-table-column width="100" :label="$t('sealinfo.fmsPath')" align="center" prop="fmsPath">
+    <el-table v-loading="loading" :data="sealinfoList" @selection-change="handleSelectionChange" border  >
+      <el-table-column type="selection" :selectable='checkboxSelect' width="55" align="center" :resizable="false" v-if="selectionShow"/>
+      <el-table-column width="100" :label="$t('sealinfo.fmsPath')" align="center" prop="fmsPath"  :resizable="false">
         <template slot-scope="scope">
           <el-image
             style="width: 50px; height: 50px"
@@ -100,21 +100,20 @@
           </el-image>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('sealinfo.sealName')" align="center" prop="sealName"/>
-      <el-table-column width="150" :label="$t('flow.applicant')" align="center" prop="applicant" />
-
-      <el-table-column :label="$t('sealinfo.beginTime')" align="center" prop="beginTime" width="150">
+      <el-table-column :label="$t('sealinfo.sealName')" align="center" prop="sealName"  :resizable="false"/>
+      <el-table-column width="100" :label="$t('sealinfo.userId')" align="center" prop="userName"   :resizable="false"/>
+      <el-table-column width="100" :label="$t('flow.applicant')" align="center" prop="applicant"  :resizable="false"/>
+      <el-table-column width="120" :label="$t('sealinfo.beginTime')" align="center" prop="beginTime"   :resizable="false">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.beginTime, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('sealinfo.stopTime')" align="center" prop="stopTime" width="150">
+      <el-table-column width="120" :label="$t('sealinfo.stopTime')" align="center" prop="stopTime"  :resizable="false">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.stopTime, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('sealinfo.userId')" align="center" prop="userName" width="150"/>
-      <el-table-column width="100" :label="$t('sealinfo.nullifyImg')" align="center" prop="trashFmsPath">
+      <el-table-column width="100" :label="$t('sealinfo.nullifyImg')" align="center" prop="trashFmsPath"  :resizable="false">
         <template slot-scope="scope">
           <el-image v-if="scope.row.sealDict==4 && scope.row.trashFmsPath"
                     style="width: 50px; height: 50px"
@@ -123,9 +122,9 @@
           </el-image>
         </template>
       </el-table-column>
-      <el-table-column width="150" :label="$t('flow.treatmentState')" align="center" prop="sealDict" :formatter="sealDictFormat"/>
-      <el-table-column width="150" :label="$t('common.examinationApproval')" align="center" prop="workName"/>
-      <el-table-column :label="$t('common.detailOperation')" align="center" width="80">
+      <el-table-column width="150" :label="$t('flow.treatmentState')" align="center" prop="sealDict" :formatter="sealDictFormat"  :resizable="false"/>
+      <el-table-column width="150" :label="$t('common.examinationApproval')" align="center" prop="workName"  :resizable="false"/>
+      <el-table-column width="80"  :label="$t('common.detailOperation')" align="center"  :resizable="false">
         <template slot-scope="scope">
           <el-button
             size="mini"
@@ -355,6 +354,7 @@ import {getProcesHandler} from "@/api/info/flow";
 import {getToken} from "@/utils/auth";
 import {checkRole} from '@/utils/permission';
 import FilePreview from "../../../components/FilePreview/index";
+import store from "@/store";
 
 export default {
   name: "Sealinfo",
@@ -428,6 +428,18 @@ export default {
       },
       userId: '',
     };
+  },
+  //vsc_sun添加
+  computed:{
+    selectionShow(){
+      const value  = "info:sealinfo:transfer"
+      const all_permission = "*:*:*";
+      const permissions = store.getters && store.getters.permissions
+      const hasPermissions = permissions.some(permission => {
+        return all_permission === permission || value===permission
+      })
+      return hasPermissions;
+    }
   },
   created() {
     this.baseUrl = process.env.VUE_APP_BASE_DOWNLOAD_URL
