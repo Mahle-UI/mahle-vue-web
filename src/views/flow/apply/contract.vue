@@ -1136,7 +1136,9 @@ export default {
             // .indexOf(query.toLowerCase()) > -1
             ;
         });
-        if (this.objectOptions.length == 0) {
+
+        let items = this.objectArray.filter(item =>  item.objNameCn === query);
+        if (items.length === 0) {
           this.query = query
         }
       } else {
@@ -1145,7 +1147,7 @@ export default {
     },
     remoteMethod2(callback) {
       if (!callback) {
-        if (this.objectOptions.length == 0 && this.query.trim()) {
+        if (this.query.trim()) {
           var that = this
           this.$confirm(this.$t('contract.objectNoMistake') + "“" + this.query + "”" + this.$t('contract.objectNoMistake1'), this.$t('common.tips'), {
             confirmButtonText: this.$t('common.submit'),

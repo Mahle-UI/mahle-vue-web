@@ -8,3 +8,10 @@ export function deleteFile(query) {
     params: query
   })
 }
+// 删除文件
+export function getFileById(id) {
+  return request({
+    url: '/info/file/find/' + id,
+    method: 'get'
+  })
+}

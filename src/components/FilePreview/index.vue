@@ -10,6 +10,7 @@
 <script>
 //import ElImageViewer from 'element-ui/packages/image/src/image-viewer'
 import pdfview from '../PdfView/index';
+import {getFileById} from "@/api/info/file";
 
 
 export default {
@@ -49,15 +50,16 @@ export default {
           this.$refs.pdfview.showDialog(url);
         })
       } else if (imgRegx.test(name)) {
-        this.url = url;
         let that = this;
-        //this.showViewer = true;
-        /*setTimeout(function (){
-        },200);*/
-        this.$nextTick(() => {
-          setTimeout(function () {
-            that.$refs.preImage.clickHandler();
-          },200)
+        getFileById(fileId).then(response => {
+          if(response.code === 200){
+            this.url = process.env.VUE_APP_BASE_API + "/file/" + response.data.filePath
+            this.$nextTick(() => {
+              setTimeout(function () {
+                that.$refs.preImage.clickHandler();
+              },200)
+            })
+          }
         })
       } else {
         window.open(url, '_blank')

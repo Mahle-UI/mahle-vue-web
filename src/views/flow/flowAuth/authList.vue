@@ -10,22 +10,6 @@
           @keyup.enter.native="handleQuery"
         />
       </el-form-item>
-     <!-- <el-form-item :label="$t('flowAuth.startTime')" prop="startTime">
-        <el-date-picker clearable size="small" style="width: 200px"
-                        v-model="queryParams.startTime"
-                        type="date"
-                        value-format="yyyy-MM-dd"
-                        :placeholder="$t('common.choose')+$t('flowAuth.startTime')">
-        </el-date-picker>
-      </el-form-item>
-      <el-form-item :label="$t('flowAuth.endTime')" prop="endTime">
-        <el-date-picker clearable size="small" style="width: 200px"
-                        v-model="queryParams.endTime"
-                        type="date"
-                        value-format="yyyy-MM-dd"
-                        :placeholder="$t('common.choose')+$t('flowAuth.endTime')">
-        </el-date-picker>
-      </el-form-item>-->
       <el-form-item>
         <el-button type="cyan" icon="el-icon-search" size="mini" @click="handleQuery">{{$t('common.search')}}</el-button>
         <el-button icon="el-icon-refresh" size="mini" @click="resetQuery">{{$t('common.reset')}}</el-button>
@@ -59,8 +43,6 @@
       :limit.sync="queryParams.pageSize"
       @pagination="getList"
     />
-
-
   </div>
 </template>
 

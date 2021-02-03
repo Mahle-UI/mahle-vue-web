@@ -135,3 +135,11 @@ export function selectLikeUserName(query) {
     params: query
   })
 }
+// 模糊查询本部门用户列表
+export function selectDeptUser(query) {
+  return request({
+    url: '/system/user/selectDeptUser',
+    method: 'get',
+    params: query
+  })
+}

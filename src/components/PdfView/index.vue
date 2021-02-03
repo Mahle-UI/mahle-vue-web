@@ -35,7 +35,7 @@ export default {
     loadPdfHandler(e) {
       this.currentPage = 1 // 加载的时候先加载第一页
     }
-  },
+  }
 }
 </script>
 
