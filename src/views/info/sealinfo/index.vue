@@ -442,7 +442,7 @@ export default {
     }
   },
   created() {
-    this.baseUrl = process.env.VUE_APP_BASE_DOWNLOAD_URL
+    this.baseUrl = process.env.VUE_APP_BASE_API + "/file/";
     this.userId = this.$store.getters.userId
     this.getDicts("seal_status").then(response => {
       this.sealDictOptions = response.data;
@@ -584,6 +584,8 @@ export default {
         this.sealinfoList.forEach(item => {
           if (item.supplyId == this.ids[0]) {
             this.selectSeal = item;
+            this.transferForm.userId = Number(item.userId);
+            this.transferForm.reserveUserId=  !!item.reserveUserId ?  Number(item.reserveUserId) : ""
           }
         })
       }

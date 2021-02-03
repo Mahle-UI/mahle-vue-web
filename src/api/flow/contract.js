@@ -114,14 +114,7 @@ export function archiveoperation(data) {
     data:data
   })
 }
-//效验 合同名
-export function chkcontractname(query) {
-  return request({
-    url: '/info/continfo/chkcontractname',
-    method: 'post',
-    params:query
-  })
-}
+
 //历史合同 获得合同编号
 export function inithistorycontractno() {
   return request({

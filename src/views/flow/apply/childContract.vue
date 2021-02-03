@@ -379,20 +379,13 @@
 
 <script>
 import { loadsigndept,loadobjcombo,loaddeptcombo,searchapplyman,searchcontempname,
-searchmastercontract,searchtmpcontract,addcontractinfo,chkcontractname } from "@/api/flow/contract";
+searchmastercontract,searchtmpcontract,addcontractinfo } from "@/api/flow/contract";
 import { getToken } from "@/utils/auth";
 import FilePreview from "../../../components/FilePreview/index";
 export default {
   name: "Contract",
   components: {FilePreview},
   data() {
-    const vaildContractName = (rule, value, callback) => {
-      if (!this.form.contractName) {
-        callback(new Error("合同名称不能为空"));
-      } else {
-        this.vaildContractName(callback)
-      }
-    };
     return {
        type:110,
       radio1:'1',
@@ -464,7 +457,7 @@ export default {
           { required: true, message: "请选择是否使用模板", trigger: "blur" }
         ],
         contractName: [
-          { required: true, trigger: "blur",validator: vaildContractName }
+          { required: true, message: "合同名称不能为空", trigger: "blur" }
         ],
         cateDict: [
           { required: true, message: "合同分类不能为空", trigger: "blur" }
@@ -524,20 +517,6 @@ export default {
     };
   }
   ,methods: {
-     /** 验证 */
-    vaildContractName(callback) {
-      if(this.form.contractName){
-          chkcontractname({contractName:this.form.contractName,contractId:this.form.contractId}).then(response => {
-            if(response.code=='200'){
-              callback()
-            }else{
-              callback(new Error("合同名称已存在"))
-            }
-          });
-      }else{
-        callback()
-      }
-    },
     searchUser(val){
       this.userOptions = []
       searchapplyman({uName :val}).then(response => {

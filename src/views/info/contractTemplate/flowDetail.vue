@@ -60,7 +60,7 @@
           var data = response.data.detail;
           data.usageDepts = ''
           if(data.usageDeptList&&data.usageDeptList.length>0){
-            data.usageDepts = data.usageDeptList[0].deptId?data.usageDeptList[0].deptId:''
+            data.usageDepts = data.usageDeptList[0].deptId? Number(data.usageDeptList[0].deptId):''
           }
           data.concernDept = []
           if(data.concernDeptList&&data.concernDeptList.length>0){

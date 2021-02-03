@@ -107,7 +107,7 @@
             size="mini"
             type="text"
             icon="el-icon-edit"
-            v-if="scope.row.hasChild === '1'  && scope.row.templDict==3"
+            v-if="scope.row.pointer === '1' && scope.row.templDict === '3'"
             @click="handleUpdate(scope.row)"
             v-hasPermi="['info:contractTemplate:update']"
           >{{ $t('common.replace') }}

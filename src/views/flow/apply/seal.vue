@@ -77,7 +77,7 @@
             <el-option
               v-for="dept in deptOptions"
               :key="dept.deptId"
-              :label="dept.deptName+' '+dept.deptNameEn"
+              :label="dept.deptName"
               :value="dept.deptId"
             />
         </el-select>
