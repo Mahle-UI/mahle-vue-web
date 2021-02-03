@@ -204,7 +204,7 @@ export default{
     keyWords:'Contract name or other name',
     objectNoMistake:'The opposite party name is correct?',
     process:'Contract Process' ,
-    addOrUpdate:'New/Update Contract Template Application',
+    addOrUpdate:'New Contract Template Application',
     termination:'Are you sure to terminate the contract?',
     terminationfile:'Termination of contract',
     remark:'Remark',

@@ -283,20 +283,18 @@
 
 
         <el-table v-loading="loading" :data="contractList" @selection-change="handleSelectionChange" border>
-          <el-table-column width="55" type="selection"  align="center" v-if="selectionShow"/>
-          <el-table-column :label="$t('contract.applyForUserId')" align="center" prop="applyForUName"/>
-          <el-table-column width="130" :label="$t('contract.contractPreNo')" align="center" prop="contractPreNo">
+          <el-table-column width="55" type="selection"  align="center" v-if="selectionShow" :resizable="false"/>
+          <el-table-column :label="$t('contract.applyForUserId')" align="center" prop="applyForUName" :resizable="false"/>
+          <el-table-column width="130" :label="$t('contract.contractPreNo')" align="center" prop="contractPreNo" :resizable="false">
             <template slot-scope="scope"><span>{{ scope.row.contractPreNo || '--' }}</span></template>
           </el-table-column>
-          <el-table-column width="200" :label="$t('contract.contractName')" align="center" prop="contractName"/>
-          <el-table-column width="200" :label="$t('contract.customerName')" align="center" prop="objNameCn"/>
-          <el-table-column width="150" :label="$t('contract.amount')" align="center" prop="amount"
-                           :formatter="formatCurrency"/>
-          <el-table-column :label="$t('flow.treatmentState')" align="center" prop="contractDict" :formatter="statusFormat"/>
-          <el-table-column width="150" :label="$t('common.examinationApproval')" align="center" prop="workName"/>
-          <el-table-column width="160" :label="$t('contract.updateTime')" align="center" prop="updateTime"/>
-          <el-table-column width="80" :label="$t('common.detailOperation')" align="center"
-                           class-name="small-padding fixed-width">
+          <el-table-column width="200" :label="$t('contract.contractName')" align="center" prop="contractName" :resizable="false"/>
+          <el-table-column width="200" :label="$t('contract.customerName')" align="center" prop="objNameCn" :resizable="false"/>
+          <el-table-column width="150" :label="$t('contract.amount')" align="center" prop="amount" :formatter="formatCurrency" :resizable="false"/>
+          <el-table-column width="150" :label="$t('flow.treatmentState')" align="center" prop="contractDict" :formatter="statusFormat" :resizable="false"/>
+          <el-table-column width="150" :label="$t('common.examinationApproval')" align="center" prop="workName" :resizable="false"/>
+          <el-table-column width="160" :label="$t('contract.updateTime')" align="center" prop="updateTime" :resizable="false"/>
+          <el-table-column width="80" :label="$t('common.detailOperation')" align="center" class-name="small-padding fixed-width" :resizable="false">
             <template slot-scope="scope">
               <!-- 查看 =>催办 =>更新 =>归档=>下载 =>终止 -->
               <el-button
@@ -308,7 +306,7 @@
               </el-button>
             </template>
           </el-table-column>
-          <el-table-column :label="$t('common.operation')" align="center"
+          <el-table-column width="200" :label="$t('common.operation')" align="center"
                              class-name="small-padding fixed-width">
             <template slot-scope="scope">
               <!-- 催办 -->
