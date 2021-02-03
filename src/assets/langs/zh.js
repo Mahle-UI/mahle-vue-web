@@ -204,7 +204,7 @@ export default{
     keyWords:'合同名称',
     objectNoMistake:'该相对方名称是否无误？',
     process:'合同流程' ,
-    addOrUpdate:'合同模板新增/更新申请',
+    addOrUpdate:'合同模板新增',
     termination:'确定要终止该合同吗？',
     terminationfile:'终止合同',
     remark:'备注',

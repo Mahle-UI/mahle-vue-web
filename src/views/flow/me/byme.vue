@@ -56,20 +56,19 @@
           <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
         </el-row>
         <el-table v-loading="loading" :data="list" border>
-          <el-table-column width="150" :label="$t('flow.applicant')" align="center" prop="applicantName" :show-overflow-tooltip="true"/>
-          <el-table-column width="180" :label="$t('flow.flowNo')" align="center" prop="procesSn" :show-overflow-tooltip="true"/>
-          <el-table-column width="100" :label="$t('flow.level')" align="center" prop="urgent" :formatter="urgentFormat" :show-overflow-tooltip="true"/>
-          <el-table-column width="220" :label="$t('flow.flowType')" align="center" prop="procesType" :formatter="procesTypeFormat" :show-overflow-tooltip="true"/>
-          <el-table-column  :label="$t('flow.flowTitle')" align="center" prop="procesName" :show-overflow-tooltip="true" />
-          <el-table-column width="100" :label="$t('flow.status')" align="center" prop="procesStatus" :formatter="procesStatusFormat" :show-overflow-tooltip="true"/>
-          <el-table-column width="200" :label="$t('common.examinationApproval')" align="center" prop="currentApprove" :show-overflow-tooltip="true"/>
-          <el-table-column width="180" :label="$t('flow.approvedTime')"   align="center" prop="procesTime" :show-overflow-tooltip="true">
+          <el-table-column width="150" :label="$t('flow.applicant')" align="center" prop="applicantName" :show-overflow-tooltip="true" :resizable="false"/>
+          <el-table-column width="180" :label="$t('flow.flowNo')" align="center" prop="procesSn" :show-overflow-tooltip="true" :resizable="false"/>
+          <el-table-column width="100" :label="$t('flow.level')" align="center" prop="urgent" :formatter="urgentFormat" :show-overflow-tooltip="true" :resizable="false"/>
+          <el-table-column width="220" :label="$t('flow.flowType')" align="center" prop="procesType" :formatter="procesTypeFormat" :show-overflow-tooltip="true" :resizable="false"/>
+          <el-table-column  :label="$t('flow.flowTitle')" align="center" prop="procesName" :show-overflow-tooltip="true" :resizable="false"/>
+          <el-table-column width="100" :label="$t('flow.status')" align="center" prop="procesStatus" :formatter="procesStatusFormat" :show-overflow-tooltip="true" :resizable="false"/>
+          <el-table-column width="200" :label="$t('common.examinationApproval')" align="center" prop="currentApprove" :show-overflow-tooltip="true" :resizable="false"/>
+          <el-table-column width="180" :label="$t('flow.approvedTime')"   align="center" prop="procesTime" :show-overflow-tooltip="true" :resizable="false">
             <template slot-scope="scope">
             {{parseTime(scope.row.procesTime,'{y}-{m}-{d} {h}:{i}')}}
             </template>
           </el-table-column>
-          <el-table-column width="80" :label="$t('common.detailOperation')" align="center"
-                           class-name="small-padding fixed-width">
+          <el-table-column width="80" :label="$t('common.detailOperation')" align="center" class-name="small-padding fixed-width" :resizable="false">
             <template slot-scope="scope">
 
               <el-button

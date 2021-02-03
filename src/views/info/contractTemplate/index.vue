@@ -80,16 +80,14 @@
               :load="load" row-key="templId" lazy
               :tree-props="{children: 'children', hasChildren: 'hasChild'}" border>
 
-      <el-table-column :label="$t('contractTemplate.templateNo')" align="center" prop="templNo"/>
-      <el-table-column :label="$t('contractTemplate.templateName')" align="center" prop="templName"/>
-      <el-table-column :label="$t('contractTemplate.createBy')" align="center" prop="uName"/>
-      <el-table-column :label="$t('contractTemplate.usedept')" align="center" prop="usageDeptName"/>
-      <el-table-column :label="$t('flow.treatmentState')" align="center" prop="templDict"
-                       :formatter="templDictFormat"/>
-      <el-table-column :label="$t('common.examinationApproval')" align="center" prop="workName"/>
-      <el-table-column :label="$t('contractTemplate.remark')" align="center" prop="remark"/>
-
-      <el-table-column :label="$t('common.detailOperation')" align="center" width="80" class-name="small-padding fixed-width">
+      <el-table-column width="180" :label="$t('contractTemplate.templateNo')" align="center" prop="templNo" :resizable="false"/>
+      <el-table-column :label="$t('contractTemplate.templateName')" align="center" prop="templName" :resizable="false"/>
+      <el-table-column width="100" :label="$t('contractTemplate.createBy')" align="center" prop="uName" :resizable="false"/>
+      <el-table-column width="240" :label="$t('contractTemplate.usedept')" align="center" prop="usageDeptName" :resizable="false"/>
+      <el-table-column width="150" :label="$t('flow.treatmentState')" align="center" prop="templDict" :formatter="templDictFormat" :resizable="false"/>
+      <el-table-column width="150" :label="$t('common.examinationApproval')" align="center" prop="workName" :resizable="false"/>
+      <el-table-column :label="$t('contractTemplate.remark')" align="center" prop="remark" :resizable="false"/>
+      <el-table-column width="80" :label="$t('common.detailOperation')" align="center" class-name="small-padding fixed-width" :resizable="false">
         <template slot-scope="scope">
           <el-button
             size="mini"
@@ -101,7 +99,7 @@
           </el-button>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('common.operation')" align="center" class-name="small-padding fixed-width">
+      <el-table-column width="200" :label="$t('common.operation')" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
             size="mini"
