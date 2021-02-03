@@ -97,17 +97,17 @@
     </el-row>
 
     <el-table v-loading="loading" :data="customerList" @selection-change="handleSelectionChange" border>
-      <el-table-column type="selection" width="55" align="center" />
-      <el-table-column width="260" :label="$t('customer.objNameCn')" align="left" prop="objNameCn" >
+      <el-table-column type="selection" width="55" align="center" :resizable="false"/>
+      <el-table-column width="260" :label="$t('customer.objNameCn')" align="left" prop="objNameCn" :resizable="false">
         <!-- <template slot-scope="scope">
           <span v-html="name(scope.row)"></span>
         </template> -->
       </el-table-column>
-      <el-table-column :label="$t('customer.country')" align="center" prop="country" :formatter="countryFormat" />
-      <el-table-column :label="$t('customer.zone')" align="center" prop="zone" />
-      <el-table-column :label="$t('customer.managerId')" align="center" prop="managerName" />
-      <el-table-column :label="$t('customer.linkNames')" align="center" prop="linkManCn" />
-      <el-table-column width="200" :label="$t('common.operation')" align="center" class-name="small-padding fixed-width">
+      <el-table-column :label="$t('customer.country')" align="center" prop="country" :formatter="countryFormat":resizable="false" />
+      <el-table-column :label="$t('customer.zone')" align="center" prop="zone" :resizable="false"/>
+      <el-table-column :label="$t('customer.managerId')" align="center" prop="managerName" :resizable="false"/>
+      <el-table-column :label="$t('customer.linkNames')" align="center" prop="linkManCn" :resizable="false"/>
+      <el-table-column width="200" :label="$t('common.operation')" align="center" class-name="small-padding fixed-width" :resizable="false">
         <template slot-scope="scope">
           <el-button
             size="mini"

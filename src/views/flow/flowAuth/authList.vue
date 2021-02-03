@@ -17,23 +17,20 @@
     </el-form>
 
     <el-table v-loading="loading" :data="flowList" border>
-
-      <el-table-column :label="$t('flowAuth.flowName')" align="center" prop="flowName"/>
-      <el-table-column :label="$t('flowAuth.authUser')" align="center" prop="agentUserName" />
-      <el-table-column :label="$t('flowAuth.userAuth')" align="center" prop="userName" />
-      <el-table-column :label="$t('flowAuth.startTime')" align="center" prop="beginDate">
+      <el-table-column :label="$t('flowAuth.flowName')" align="center" prop="flowName" :resizable="false"/>
+      <el-table-column :label="$t('flowAuth.authUser')" align="center" prop="agentUserName" :resizable="false"/>
+      <el-table-column :label="$t('flowAuth.userAuth')" align="center" prop="userName" :resizable="false"/>
+      <el-table-column :label="$t('flowAuth.startTime')" align="center" prop="beginDate" :resizable="false">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.beginDate, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('flowAuth.endTime')" align="center" prop="endDate">
+      <el-table-column :label="$t('flowAuth.endTime')" align="center" prop="endDate" :resizable="false">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.endDate, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('common.status')" align="center" prop="status">
-
-      </el-table-column>
+      <el-table-column :label="$t('common.status')" align="center" prop="status" :resizable="false"/>
     </el-table>
 
     <pagination

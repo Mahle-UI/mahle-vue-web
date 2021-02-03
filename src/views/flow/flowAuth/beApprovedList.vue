@@ -21,14 +21,14 @@
     </el-form>
 
     <el-table v-loading="loading" :data="flowList" border>
-      <el-table-column :label="$t('flowAuth.title')" align="center" prop="title">
+      <el-table-column :label="$t('flowAuth.title')" align="center" prop="title" :resizable="false">
         <template slot-scope="scope">
           <el-button type="text" @click="toDetail(scope.row)">{{scope.row.title}}</el-button>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('flowAuth.flowName')" align="center" prop="flowname" />
-      <el-table-column :label="$t('flowAuth.approveTime')" align="center" prop="savetime" />
-      <el-table-column :label="$t('flowAuth.userAuth')" align="center" prop="username" />
+      <el-table-column :label="$t('flowAuth.flowName')" align="center" prop="flowname" :resizable="false"/>
+      <el-table-column :label="$t('flowAuth.approveTime')" align="center" prop="savetime" :resizable="false"/>
+      <el-table-column :label="$t('flowAuth.userAuth')" align="center" prop="username" :resizable="false"/>
     </el-table>
 
     <pagination

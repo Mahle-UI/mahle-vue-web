@@ -284,11 +284,11 @@
 
         <el-table v-loading="loading" :data="contractList" @selection-change="handleSelectionChange" border>
           <el-table-column width="55" type="selection"  align="center" v-if="selectionShow" :resizable="false"/>
-          <el-table-column :label="$t('contract.applyForUserId')" align="center" prop="applyForUName" :resizable="false"/>
+          <el-table-column width="100" :label="$t('contract.applyForUserId')" align="center" prop="applyForUName" :resizable="false"/>
           <el-table-column width="130" :label="$t('contract.contractPreNo')" align="center" prop="contractPreNo" :resizable="false">
             <template slot-scope="scope"><span>{{ scope.row.contractPreNo || '--' }}</span></template>
           </el-table-column>
-          <el-table-column width="200" :label="$t('contract.contractName')" align="center" prop="contractName" :resizable="false"/>
+          <el-table-column :label="$t('contract.contractName')" align="center" prop="contractName" :resizable="false"/>
           <el-table-column width="200" :label="$t('contract.customerName')" align="center" prop="objNameCn" :resizable="false"/>
           <el-table-column width="150" :label="$t('contract.amount')" align="center" prop="amount" :formatter="formatCurrency" :resizable="false"/>
           <el-table-column width="150" :label="$t('flow.treatmentState')" align="center" prop="contractDict" :formatter="statusFormat" :resizable="false"/>

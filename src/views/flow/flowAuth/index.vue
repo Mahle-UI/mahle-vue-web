@@ -39,20 +39,20 @@
     </el-row>
 
     <el-table v-loading="loading" :data="flowList" @selection-change="handleSelectionChange" border>
-      <el-table-column type="selection" width="55" align="center"/>
-      <el-table-column width="600" :label="$t('flowAuth.flowName')" align="left" prop="flowName"/>
-      <el-table-column :label="$t('flowAuth.authUser')" align="center" prop="agentUserName"/>
-      <el-table-column :label="$t('flowAuth.startTime')" align="center" prop="beginDate">
+      <el-table-column type="selection" width="55" align="center" :resizable="false"/>
+      <el-table-column width="600" :label="$t('flowAuth.flowName')" align="left" prop="flowName" :resizable="false"/>
+      <el-table-column :label="$t('flowAuth.authUser')" align="center" prop="agentUserName" :resizable="false"/>
+      <el-table-column :label="$t('flowAuth.startTime')" align="center" prop="beginDate" :resizable="false">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.beginDate, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('flowAuth.endTime')" align="center" prop="endDate">
+      <el-table-column :label="$t('flowAuth.endTime')" align="center" prop="endDate" :resizable="false">
         <template slot-scope="scope">
           <span>{{ parseTime(scope.row.endDate, '{y}-{m}-{d}') }}</span>
         </template>
       </el-table-column>
-      <el-table-column :label="$t('common.operation')" align="center" class-name="small-padding fixed-width">
+      <el-table-column :label="$t('common.operation')" align="center" class-name="small-padding fixed-width" :resizable="false">
         <template slot-scope="scope">
           <el-button
             v-if="scope.row.status =='否'"
