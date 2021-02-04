@@ -40,6 +40,7 @@
 
     <el-table v-loading="loading" :data="sealBorrowList" @selection-change="handleSelectionChange" border>
       <el-table-column :label="$t('sealBorrow.sealName')" align="center" prop="sealName" :resizable="false"/>
+      <el-table-column :label="$t('sealinfo.userId')" align="center" prop="keeper" :resizable="false"/>
       <el-table-column width="100" :label="$t('flow.applicant')" align="center" prop="reserve" :resizable="false"/>
       <el-table-column width="100 " :label="$t('sealBorrow.user')" align="center" prop="borrowUserName" :resizable="false"/>
       <el-table-column width="240" :label="$t('sealBorrow.borrowDeptId')" align="center" prop="borrowDeptName" :resizable="false"/>

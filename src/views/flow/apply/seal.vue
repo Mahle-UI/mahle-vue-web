@@ -421,7 +421,7 @@
                   this.upload.fileList = data.list;
                   this.upload.fileList.forEach(item=>{
                     item.name = item.fileName
-                    item.url = process.env.VUE_APP_BASE_DOWNLOAD_URL +  item.fmsInfoId
+                    item.url = process.env.VUE_APP_BASE_API +  item.filePath
                   })
                   data.fmsInfoId = data.list[0].fmsInfoId?data.list[0].fmsInfoId:''
                 }

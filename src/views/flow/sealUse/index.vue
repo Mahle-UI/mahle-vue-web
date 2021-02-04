@@ -90,6 +90,7 @@
 
     <el-table v-loading="loading" :data="sealUseList" border>
       <el-table-column :label="$t('sealUse.sealId')" align="center" prop="sealName" :resizable="false"/>
+      <el-table-column :label="$t('sealinfo.userId')" align="center" prop="keeper" :resizable="false"/>
       <el-table-column width="100" :label="$t('flow.applicant')" align="center" prop="applicant" :resizable="false"/>
       <el-table-column width="100" :label="$t('sealUse.userName')" align="center" prop="userName" :resizable="false"/>
       <el-table-column v-if="false" :label="$t('sealUse.userId')" align="center" prop="userId" :resizable="false"/>

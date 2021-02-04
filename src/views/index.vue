@@ -47,11 +47,8 @@
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <span><i class="el-icon-document"></i> {{$t('sealinfo.explan')}}</span>
-            <!-- <i style="float: right" class="el-icon-d-arrow-right cursor"></i> -->
           </div>
           <div>
-
-              <!-- @row-click="toExplainDetail" -->
             <el-table
               :data="meData"
               :show-header="false"
@@ -65,12 +62,6 @@
                   <span  class="cursor" @click="handleView1(scope.row)">{{$i18n.locale=='en'&&scope.row.msgTemplEn?scope.row.msgTemplEn:scope.row.msgTempl}}</span>
                 </template>
               </el-table-column>
-              <!-- <el-table-column
-                prop="createName"
-                width="80"
-                :show-overflow-tooltip="true"
-                label="紧急">
-              </el-table-column> -->
               <el-table-column
                 prop="createTime"
                 :show-overflow-tooltip="true"
@@ -147,7 +138,6 @@
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <span><i class="el-icon-chat-dot-square"></i> {{$t('common.notice')}}</span>
-            <!-- <i style="float: right" class="el-icon-d-arrow-right cursor"></i> -->
           </div>
           <div>
             <el-table
@@ -345,38 +335,39 @@ export default {
         //this.$router.push("/me/detail?id="+row.contentId);
       },
       handleView1(row){
-        this.$router.push("/me/detail?id="+row.contentId);
+        this.$router.push(`/me/detail?id=${row.contentId}&msg=true`);
       },
       handleNewsView(row){
         let that = this;
+        let url;
         //0  是 合同;   1 是 模板 ;  2是 印章
         if(row.hostType=='0'){
           //合同
-          this.$router.push("/me/detail?id="+row.hostId);
+          url = "/me/detail?id="+row.hostId
         }else if(row.hostType=='1'){
           //子合同
-          this.$router.push("/me/detail?id="+row.hostId);
+          url = "/me/detail?id="+row.hostId
         }else if(row.hostType=='2'){
           //合同模板
-          this.$router.push("/flow/templateDetail?id="+row.hostId);
+          url = "/flow/templateDetail?id="+row.hostId
         }else if(row.hostType=='3'){
           //印章制作申请
-          this.$router.push("/flow/sealDetail?id="+row.hostId+"&category=1");
+          url = "/flow/sealDetail?id="+row.hostId+"&category=1"
         }else if(row.hostType=='4'){
           //印章作废申请
-          this.$router.push("/flow/sealDeleteDetail?id="+row.hostId);
+          url = "/flow/sealDeleteDetail?id="+row.hostId
         }else if(row.hostType=='5'){
           //子公司法人
-          this.$router.push("/seal/sealUseDetail?id="+row.hostId);
+          url = "/seal/sealUseDetail?id="+row.hostId
         }else if(row.hostType == "6"){
           //公章外借
-          this.$router.push("/flow/sealBorrowDetail?id="+row.hostId);
+          url = "/flow/sealBorrowDetail?id="+row.hostId
         }else if(row.hostType == "11"){
           //子合同2
-          this.$router.push("/me/detail?id="+row.hostId);
+          url = "/me/detail?id="+row.hostId
         }else {
           this.$confirm(row.noticeContent, this.$t('common.detailOperation'), {
-            confirmButtonText: this.$t('common.submit'),
+            confirmButtonText: this.$t('common.IKnow'),
             cancelButtonText: this.$t('common.cancle'),
             type: "warning"
           }).then(function() {
@@ -386,6 +377,13 @@ export default {
               }
             });
           }).catch(function() {});
+        }
+        if(url){
+          readNotice(row.noticeId).then(response => {
+            if(response.code === 200){
+              that.$router.push(url);
+            }
+          });
         }
         // this.$router.push("/news/detail?id="+row.id);
       },

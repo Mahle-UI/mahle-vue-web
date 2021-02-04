@@ -187,7 +187,7 @@ export default {
         } else {
           that.mShowComment = false
         }
-        if (!that.mShowComment) {
+        if (!that.mShowComment || that.$route.query.msg) {
           that.activeName = "second"
         }
       });

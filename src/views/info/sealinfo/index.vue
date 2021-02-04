@@ -101,7 +101,7 @@
         </template>
       </el-table-column>
       <el-table-column :label="$t('sealinfo.sealName')" align="center" prop="sealName"  :resizable="false"/>
-      <el-table-column width="100" :label="$t('sealinfo.userId')" align="center" prop="userName"   :resizable="false"/>
+      <el-table-column width="120" :label="$t('sealinfo.userId')" align="center" prop="userName"   :resizable="false"/>
       <el-table-column width="100" :label="$t('flow.applicant')" align="center" prop="applicant"  :resizable="false"/>
       <el-table-column width="120" :label="$t('sealinfo.beginTime')" align="center" prop="beginTime"   :resizable="false">
         <template slot-scope="scope">
@@ -145,11 +145,10 @@
               type="text"
               icon="el-icon-view"
               @click="toDeleteDetail(scope.row)"
-              v-hasPermi="['info:sealinfo:trash']"
             >{{ $t('common.delView') }}</el-button>
           </span>
 
-          <span v-if="scope.row.sealDict==2">
+          <span v-if="scope.row.sealDict==2 && (scope.row.userId == $store.getters.userId ||  scope.row.reserveUserId == $store.getters.userId)">
             <el-button
               size="mini"
               type="text"
@@ -716,7 +715,8 @@ export default {
       }
     },
     showUpdateBtn(row,rowIndex){
-      if((row.sealDict==2 || row.sealDict==9) && (row.createByLogin == this.$store.getters.userId || checkRole(["smts_seal_store_main","smts_admin","admin"]))){
+      let userId = this.$store.getters.userId;
+      if((row.sealDict==2 || row.sealDict==9) && (row.createByLogin == userId || row.reserveUserId == userId || row.userId == userId  || checkRole(["smts_seal_store_main","admin"]))){
         return true;
       }
       return false;

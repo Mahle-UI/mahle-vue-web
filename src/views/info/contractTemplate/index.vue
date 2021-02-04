@@ -23,7 +23,7 @@
           />
         </el-select>
       </el-form-item>
-      <el-form-item :label="$t('flow.treatmentState')" prop="templDict">
+      <el-form-item v-hasPermi="['info:contractTemplate:add']"  :label="$t('flow.treatmentState')" prop="templDict">
         <el-select ref="multiSelect2" v-model="queryParams.templDict"
                    :placeholder="$t('common.placeSelect')+' '+$t('contractTemplate.templDict')"
                    @keyup.enter.stop.native="handleQuery" clearable size="small">

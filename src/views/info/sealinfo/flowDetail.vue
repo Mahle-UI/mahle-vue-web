@@ -78,7 +78,7 @@
           this.form.isRegister = this.form.isRegister+""
           this.tableData = response.data.history
           this.showComment = this.form.sealDict=='7'?true:false
-          this.form.list[0].filePath = process.env.VUE_APP_BASE_DOWNLOAD_URL + this.form.list[0].fmsInfoId;
+          this.form.list[0].filePath = process.env.VUE_APP_BASE_API + "/file/" + this.form.list[0].filePath;
           this.loading = false;
         });
       },
