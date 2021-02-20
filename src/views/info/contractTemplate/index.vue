@@ -65,7 +65,7 @@
       </el-col>
       <el-col :span="1.5">
         <el-button
-          type="success"
+          type="warning"
           icon="el-icon-download"
           size="mini"
           @click="handleExport"

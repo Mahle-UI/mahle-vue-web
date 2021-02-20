@@ -142,6 +142,7 @@
           <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
         </el-row>
 
+        <!--    高级搜索start   -->
         <el-dialog :close-on-click-modal="false" @keyup.enter.stop.native="handleQuery" :title="$t('common.advancedSearch')" :visible.sync="isComplex"
                    width="700px" append-to-body="">
 
@@ -280,6 +281,7 @@
             </el-form-item>
           </el-form>
         </el-dialog>
+        <!--    高级搜索end   -->
 
 
         <el-table v-loading="loading" :data="contractList" @selection-change="handleSelectionChange" border>
@@ -334,6 +336,7 @@
                 @click="handleArchived(scope.row)"
               >{{ $t('common.contractfile') }}
               </el-button>
+              <!-- 下载-->
               <el-button
                 size="mini"
                 icon="el-icon-download"

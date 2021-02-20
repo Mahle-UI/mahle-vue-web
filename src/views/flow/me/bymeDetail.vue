@@ -82,7 +82,6 @@ export default {
         getFlowType(hostId).then(response => {
           if (response.code === 200 && response.data) {
             this.title = this.$t('contract.contractApprovalDetails') + "：" + response.data
-            console.log(response)
           }else {
             this.title = this.$t('contract.historyContractDetails')
           }

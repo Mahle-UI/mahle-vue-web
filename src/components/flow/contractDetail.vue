@@ -29,7 +29,7 @@
               <el-option
                   v-for="contractcate in contractcateOptions"
                   :key="contractcate.code"
-                  :label="contractcate.cn+' '+contractcate.en"
+                  :label="contractcate.cn"
                   :value="contractcate.code"
                 />
             </el-select>

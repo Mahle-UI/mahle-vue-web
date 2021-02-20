@@ -112,15 +112,6 @@
                           :placeholder="$t('common.choose')+$t('flowAuth.endTime')">
           </el-date-picker>
         </el-form-item>
-        <el-form-item :label="$t('flowAuth.noticeWay')" prop="noticeType">
-          <el-checkbox-group v-model="noticeTypes">
-            <el-checkbox
-              v-for="dict in noticeTypeOptions"
-              :key="dict.dictValue"
-              :label="dict.dictValue">{{ dict.dictLabel }}
-            </el-checkbox>
-          </el-checkbox-group>
-        </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
         <el-button type="primary" @click="submitForm">{{ $t('common.submit') }}</el-button>
@@ -159,7 +150,6 @@ export default {
       // 流程表格数据
       flowList: [],
       userOptions: [],
-      noticeTypeOptions: [],
       // 查询参数
       queryParams: {
         pageNum: 1,
@@ -183,15 +173,11 @@ export default {
         ],
       },
       selectItem: [],
-      noticeTypes: [],
 
     };
   },
   created() {
     this.getList();
-    this.getDicts("notice_type").then(response => {
-      this.noticeTypeOptions = response.data;
-    });
   },
   methods: {
     /** 查询印章登记列表 */
@@ -344,11 +330,6 @@ export default {
     },
     /** 提交按钮 */
     submitForm() {
-      if (this.noticeTypes && this.noticeTypes.length > 0) {
-        this.form.noticeType = this.noticeTypes.join(',')
-      } else {
-        this.form.noticeType = '';
-      }
       this.$refs["form"].validate(valid => {
         if (valid) {
           operateAction(this.form).then(response => {

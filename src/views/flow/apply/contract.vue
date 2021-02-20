@@ -475,12 +475,12 @@
             </el-switch>
           </el-form-item>
         </el-col>
-        <el-col :span="12">
+<!--        <el-col :span="12">
           <el-form-item :label="$t('contract.noticeWay')" prop="files" v-if="message">
             <el-checkbox v-model="notificationRadio1">{{ $t('contract.email1') }}</el-checkbox>
             <el-checkbox v-model="notificationRadio2">{{ $t('contract.systemNotification') }}</el-checkbox>
           </el-form-item>
-        </el-col>
+        </el-col>-->
       </el-row>
     </el-form>
     <div style="text-align: center" v-if="queryType!=3">

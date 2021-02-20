@@ -164,6 +164,9 @@ export default {
     this.msgLoadmsg();
     //console.log("caeated:" + this.msgFlagTemp);
     //console.log(this.form.applyForUserId !== this.userId && !!this.msgFlagTemp);
+    if(this.msgFlagTemp){
+      this.activeName = "second";
+    }
   },
   watch: {
     msgFlag(val) {
@@ -187,7 +190,7 @@ export default {
         } else {
           that.mShowComment = false
         }
-        if (!that.mShowComment || that.$route.query.msg) {
+        if (!that.mShowComment) {
           that.activeName = "second"
         }
       });

@@ -46,6 +46,60 @@
       <el-col :xs="24" :sm="24" :lg="12">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
+            <span><i class="el-icon-edit"></i> {{$t('common.proces')}}</span>
+            <!-- <i style="float: right" class="el-icon-d-arrow-right cursor" @click="()=>{this.$router.push('/flow/byme')}"></i> -->
+          </div>
+          <div>
+            <el-table
+              :data="flowData"
+              :show-header="false"
+              @row-click="handleView"
+              style="width: 100%">
+              <el-table-column
+                prop="procesNode"
+                min-width="100"
+                :show-overflow-tooltip="true"
+                label="消息">
+                <template slot-scope="scope">
+                  <span class="cursor"  @click="handleView(scope.row)">{{ scope.row.procesName}}</span>
+                </template>
+              </el-table-column>
+              <el-table-column
+                prop="applicantName"
+                width="100"
+                :show-overflow-tooltip="true"
+                label="姓名">
+              </el-table-column>
+<!--              <el-table-column
+                prop="urgent"
+                width="60" :formatter="urgentFormat"
+                :show-overflow-tooltip="true"
+                label="紧急"></el-table-column>-->
+              <el-table-column
+                prop="procesTime"
+                width="160"
+                :show-overflow-tooltip="true"
+                label="日期">
+              </el-table-column>
+            </el-table>
+            <pagination
+              v-show="total3>0"
+              :total="total3"
+              layout="prev, pager, next"
+              :page.sync="q3.pageNum"
+              :limit.sync="q3.pageSize"
+              @pagination="getList3"
+            />
+          </div>
+        </el-card>
+      </el-col>
+    </el-row>
+
+    <el-row :gutter="40" style="margin-top: 26px">
+      <!--     追加解释 -->
+      <el-col :xs="24" :sm="24" :lg="12">
+        <el-card class="box-card">
+          <div slot="header" class="clearfix">
             <span><i class="el-icon-document"></i> {{$t('sealinfo.explan')}}</span>
           </div>
           <div>
@@ -70,67 +124,13 @@
               </el-table-column>
             </el-table>
             <pagination
-            v-show="total2>0"
-            :total="total2"
-            layout="prev, pager, next"
-            :page.sync="q2.pageNum"
-            :limit.sync="q2.pageSize"
-            @pagination="getList2"
-          />
-          </div>
-        </el-card>
-      </el-col>
-
-    </el-row>
-
-    <el-row :gutter="40" style="margin-top: 26px">
-      <el-col :xs="24" :sm="24" :lg="12">
-        <el-card class="box-card">
-          <div slot="header" class="clearfix">
-            <span><i class="el-icon-edit"></i> {{$t('common.proces')}}</span>
-            <!-- <i style="float: right" class="el-icon-d-arrow-right cursor" @click="()=>{this.$router.push('/flow/byme')}"></i> -->
-          </div>
-          <div>
-            <el-table
-              :data="flowData"
-              :show-header="false"
-              @row-click="handleView"
-              style="width: 100%">
-              <el-table-column
-                prop="procesNode"
-                min-width="100"
-                :show-overflow-tooltip="true"
-                label="消息">
-                <template slot-scope="scope">
-                  <span class="cursor"  @click="handleView(scope.row)">{{scope.row.procesNode}}</span>
-                </template>
-              </el-table-column>
-              <el-table-column
-                prop="procesName"
-                width="100"
-                :show-overflow-tooltip="true"
-                label="姓名">
-              </el-table-column>
-              <el-table-column
-                prop="urgent"
-                width="60" :formatter="urgentFormat"
-                :show-overflow-tooltip="true"
-                label="紧急"></el-table-column>
-              <el-table-column
-                prop="procesTime"
-                width="160"
-                :show-overflow-tooltip="true"
-                label="日期">
-              </el-table-column>
-            </el-table>
-            <pagination
-            v-show="total3>0"
-            :total="total3"
-            layout="prev, pager, next"
-            :page.sync="q3.pageNum"
-            :limit.sync="q3.pageSize"
-            @pagination="getList3"
-          />
+              v-show="total2>0"
+              :total="total2"
+              layout="prev, pager, next"
+              :page.sync="q2.pageNum"
+              :limit.sync="q2.pageSize"
+              @pagination="getList2"
+            />
           </div>
         </el-card>
       </el-col>

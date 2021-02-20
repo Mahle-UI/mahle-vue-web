@@ -287,7 +287,7 @@
                   :show-file-list='false'
                 >
                   <el-button
-                      type="success"
+                      type="warning"
                       icon="el-icon-upload"
                       size="mini"
                       v-hasPermi="['system:customer:export']"

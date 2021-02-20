@@ -186,7 +186,7 @@
             { required: true, message: "模板名称不能为空",validator: vaildObjNames }
           ],
           usageDepts: [
-            { required: true, message: "请选择使用部门", trigger: "blur" }
+            { required: true, message: "请选择负责部门", trigger: "blur" }
           ],
           concernDept: [
             { required: true, message: "请选择相关部门", trigger: "blur" }

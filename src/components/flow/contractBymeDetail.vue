@@ -20,7 +20,7 @@
         <el-col :span="12">
           <el-form-item :label="$t('contract.no')" prop="contractNo">
             <el-input disabled="" v-model="form.contractNo"
-                      :placeholder="$t('common.placeholder')+' '+$t('contract.no')"/>
+                      :placeholder="$t('contract.noTip')"/>
           </el-form-item>
         </el-col>
         <el-col :span="12">

@@ -10,11 +10,11 @@
               active-color="#13ce66"
               inactive-color="#b6b6b6">
             </el-switch>
-            <el-form-item label-width="130px" style="position: absolute;top: 3px;left: 10px;" :label="$t('contract.noticeWay')" prop="files" v-if="message">
-              <!-- isRemind : 0 >> 没有 ;  isRemind : 1 >>邮箱 ; isRemind : 2 >>系统通知 ; isRemind : 3 >>  邮箱 + 系统通知 ; -->
+<!--            <el-form-item label-width="130px" style="position: absolute;top: 3px;left: 10px;" :label="$t('contract.noticeWay')" prop="files" v-if="message">
+              &lt;!&ndash; isRemind : 0 >> 没有 ;  isRemind : 1 >>邮箱 ; isRemind : 2 >>系统通知 ; isRemind : 3 >>  邮箱 + 系统通知 ; &ndash;&gt;
               <el-checkbox v-model="notificationRadio1">{{$t('contract.email')}}</el-checkbox>
               <el-checkbox v-model="notificationRadio2">{{$t('contract.systemNotification')}}</el-checkbox>
-            </el-form-item>
+            </el-form-item>-->
           </el-form-item>
 
             <el-form-item label-width="130px" :label="$t('contract.endTime')" prop="archiveEndTime">
@@ -168,7 +168,7 @@
       },
       /** 提交按钮 */
       submitForm() {
-         this.form.isRemind = this.message?this.notificationRadio1&&this.notificationRadio2?3:this.notificationRadio1?1:2:0
+         this.form.isRemind = 3
           // isRemind : 0 >> 没有 ;  isRemind : 1 >>邮箱 ; isRemind : 2 >>系统通知 ; isRemind : 3 >>  邮箱 + 系统通知 ;
           this.$refs["form"].validate(valid => {
             if (valid) {
